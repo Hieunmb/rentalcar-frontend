@@ -1,7 +1,10 @@
+import BreadCrumb from "../layouts/breadcrumb";
+
 export default function Contact(){
     return(
         <div className="no-bottom no-top" id="content">
         <div id="top"></div>
+        <BreadCrumb/>
         <section aria-label="section">
             <div className="container">
                 <div className="row g-custom-x">

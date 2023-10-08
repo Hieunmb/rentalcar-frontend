@@ -237,7 +237,7 @@ export default function Home(){
                     <div className="col-lg-6 wow fadeInRight">
                         <h2>We offer customers a wide range of <span className="id-color">commercial cars</span> and <span className="id-color">luxury cars</span> for any occasion.</h2>
                     </div>
-                    <div className="col-lg-6 wow fadeInLeft" style={{color:"black"}}>
+                    <div className="col-lg-6 wow fadeInLeft" >
                         At our car rental agency, we believe that everyone deserves to experience the pleasure of driving a reliable and comfortable vehicle, regardless of their budget. We have curated a diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at competitive prices. With our streamlined rental process, you can quickly and conveniently reserve your desired vehicle. Whether you need transportation for a business trip, family vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to accommodate your schedule.
                     </div>
                 </div>
