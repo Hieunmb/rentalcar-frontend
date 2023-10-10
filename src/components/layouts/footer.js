@@ -15,8 +15,8 @@ export default function Footer(){
                     <h5>Contact Info</h5>
                     <address className="s1">
                         <span><i className="id-color fa fa-map-marker fa-lg"></i>Số 8 Tôn Thất Thuyết</span>
-                        <span><i className="id-color fa fa-phone fa-lg"></i>+84 396321425</span>
-                        <span><i className="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">hiepga1243gmail.com</a></span>
+                        <span><i className="id-color fa fa-phone fa-lg"></i>+84 964958450</span>
+                        <span><i className="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">hieunbmth2203011@fpt.edu.vn</a></span>
                         <span><i className="id-color fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
                     </address>
                 </div>

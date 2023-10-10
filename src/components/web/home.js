@@ -1,3 +1,4 @@
+
 export default function Home(){
     const ratings ={
         color:"#cecece",
@@ -488,7 +489,6 @@ export default function Home(){
                 </div>
             </div>
         </section>
-
     </div>
     )
 }
