@@ -200,7 +200,7 @@ export default function Home(){
                                 <div className="d-info">
                                     <div className="d-text">
                                         <div style={{display: "flex"}} className="title-car">
-                                            <h4 style={titlecar}>Troll</h4>
+                                            <h4 style={titlecar}>KIA</h4>
                                             <div className="d-item_like">
                                                 <div className="ratings" style={ratings}>
                                                     <i className="fa fa-star rating-color" style={ratingcolor}></i>

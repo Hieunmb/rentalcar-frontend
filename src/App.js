@@ -14,12 +14,17 @@ import AccountProfileLicenses from './components/web/account-profile-licenses';
 import BackToTop from './components/layouts/backtotop';
 import Booking from './components/web/booking';
 import CarDetail from './components/web/car-detail';
+import CarFilter from './components/web/car-filter';
+import CarSearch from './components/web/car-search';
+import Invoice from './components/web/invoice';
+import ReceiveCar from './components/web/receiveCar';
+import Review from './components/web/review';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <CarDetail/>
+      <Review/>
       <BackToTop/>
       <Footer/>
     </div>

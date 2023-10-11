@@ -53,7 +53,7 @@ export default function Header(){
                     <div className="de-flex-col">
                         <div className="menu_side_area">
                         <ul id="mainmenu">
-                                    <li><a href=""><i className="fa fa-user"></i> Do Minh Duc</a>
+                                    <li><a href=""><i className="fa fa-user"></i> Nguyen Bui Minh Hieu</a>
                                         <ul>
                                             <li><a className="menu-item" href="">Dashboard</a>
                                             </li>
