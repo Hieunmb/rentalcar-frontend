@@ -497,3 +497,28 @@
         resize: none;
         border: 1px solid #ad9f9f;
     }
+    .fa-eye {
+      position: absolute;
+      margin-top: -41px;
+      margin-left: 300px;
+  }
+  .fa-eye-slash {
+      position: absolute;
+      margin-top: -41px;
+      margin-left: 300px;
+  }
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .password-toggle i {
+    color: #ccc;
+  }
+  
+  .password-toggle i:hover {
+    color: #333;
+  }
