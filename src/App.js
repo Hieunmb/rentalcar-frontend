@@ -2,29 +2,55 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/layouts/header';
 import BreadCrumb from './components/layouts/breadcrumb';
-import Contact from './components/web/contact';
-import Home from './components/web/home';
+import Contact from './components/pages/contact';
+import Home from './components/pages/home';
 import Footer from './components/layouts/footer';
-import AboutUs from './components/web/aboutus';
-import AccountBooking from './components/web/account-booking';
-import AccountDashBoard from './components/web/account-dashboard';
-import AccountFavouriteCars from './components/web/account-favourite-cars';
-import AccountProfile from './components/web/account-profile';
-import AccountProfileLicenses from './components/web/account-profile-licenses';
+import AboutUs from './components/pages/aboutus';
+import AccountBooking from './components/pages/account-booking';
+import AccountDashBoard from './components/pages/account-dashboard';
+import AccountFavouriteCars from './components/pages/account-favourite-cars';
+import AccountProfile from './components/pages/account-profile';
+import AccountProfileLicenses from './components/pages/account-profile-licenses';
 import BackToTop from './components/layouts/backtotop';
-import Booking from './components/web/booking';
-import CarDetail from './components/web/car-detail';
-import CarFilter from './components/web/car-filter';
-import CarSearch from './components/web/car-search';
-import Invoice from './components/web/invoice';
-import ReceiveCar from './components/web/receiveCar';
-import Review from './components/web/review';
+import Booking from './components/pages/booking';
+import CarDetail from './components/pages/car-detail';
+import CarFilter from './components/pages/car-filter';
+import CarSearch from './components/pages/car-search';
+import Invoice from './components/pages/invoice';
+import ReceiveCar from './components/pages/receiveCar';
+import Review from './components/pages/review';
+import { useJwt } from 'react-jwt';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
+  const ProtectedRoute= ({element})=>{
+    const token =localStorage.getItem("accessToken");
+    const { isExpired, isInvalid}=useJwt(token);
+    if (!token || isExpired || isInvalid) {
+      localStorage.removeItem("accessToken");
+      return <Navigate to="/login" />;
+  }
+
+  return element;
+};
+
+const ProtectedLoginRoute = ({ element }) => {
+  const token = localStorage.getItem("accessToken");
+  const { isExpired, isInvalid } = useJwt(token);
+
+  if (token && !isExpired && !isInvalid) {
+      return <Navigate to="/" />;
+  }
+
+  return element;
+};
   return (
     <div className="App">
       <Header/>
-      <Review/>
+      <Routes>
+        <Route path='/' element={<ProtectedRoute element={<Home/>}/>} />
+        <Route path="/login" element={<ProtectedLoginRoute element={<Login />} />} />
+      </Routes>
       <BackToTop/>
       <Footer/>
     </div>

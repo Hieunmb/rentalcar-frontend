@@ -497,3 +497,13 @@
         resize: none;
         border: 1px solid #ad9f9f;
     }
+    .fa-eye {
+      position: absolute;
+      margin-top: -41px;
+      margin-left: 300px;
+  }
+  .fa-eye-slash {
+      position: absolute;
+      margin-top: -41px;
+      margin-left: 300px;
+  }
