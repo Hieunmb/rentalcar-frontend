@@ -19,40 +19,51 @@ import CarSearch from './components/pages/car-search';
 import Invoice from './components/pages/invoice';
 import ReceiveCar from './components/pages/receiveCar';
 import Review from './components/pages/review';
+import {  BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useJwt } from 'react-jwt';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import Login from './components/auth/login';
+import Register from './components/auth/register';
+
 
 function App() {
-  const ProtectedRoute= ({element})=>{
-    const token =localStorage.getItem("accessToken");
-    const { isExpired, isInvalid}=useJwt(token);
-    if (!token || isExpired || isInvalid) {
-      localStorage.removeItem("accessToken");
-      return <Navigate to="/login" />;
-  }
+  const ProtectedRoute = ({ element }) => {
+    const token = localStorage.getItem("accessToken");
+    const { isExpired, isInvalid } = useJwt(token);
 
-  return element;
+    if (!token || isExpired || isInvalid) {
+        localStorage.removeItem("accessToken");
+        return <Navigate to="/login" />;
+    }
+
+    return element;
 };
 
 const ProtectedLoginRoute = ({ element }) => {
-  const token = localStorage.getItem("accessToken");
-  const { isExpired, isInvalid } = useJwt(token);
+    const token = localStorage.getItem("accessToken");
+    const { isExpired, isInvalid } = useJwt(token);
 
-  if (token && !isExpired && !isInvalid) {
-      return <Navigate to="/" />;
-  }
+    if (token && !isExpired && !isInvalid) {
+        return <Navigate to="/" />;
+    }
 
-  return element;
+    return element;
 };
   return (
     <div className="App">
+      <Router>
       <Header/>
+      <section className="product spad">
+          <div className="container">
       <Routes>
-        <Route path='/' element={<ProtectedRoute element={<Home/>}/>} />
-        <Route path="/login" element={<ProtectedLoginRoute element={<Login />} />} />
+      <Route path="/" element={<ProtectedRoute element={<Home />} />} />
+      <Route path="/login" element={<ProtectedLoginRoute element={<Login />} />} />
+      <Route path="/register" element={<ProtectedLoginRoute element={<Register />} />} />
       </Routes>
+      </div>
+          </section>
       <BackToTop/>
       <Footer/>
+      </Router>
     </div>
   );
 }
