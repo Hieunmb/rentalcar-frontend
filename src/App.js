@@ -52,15 +52,11 @@ const ProtectedLoginRoute = ({ element }) => {
     <div className="App">
       <Router>
       <Header/>
-      <section className="product spad">
-          <div className="container">
       <Routes>
       <Route path="/" element={<ProtectedRoute element={<Home />} />} />
       <Route path="/login" element={<ProtectedLoginRoute element={<Login />} />} />
       <Route path="/register" element={<ProtectedLoginRoute element={<Register />} />} />
       </Routes>
-      </div>
-          </section>
       <BackToTop/>
       <Footer/>
       </Router>

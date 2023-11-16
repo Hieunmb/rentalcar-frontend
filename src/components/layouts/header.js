@@ -1,5 +1,37 @@
-
+import { useEffect, useState } from "react";
+import { useJwt } from "react-jwt";
+import { Link, useNavigate } from "react-router-dom";
 export default function Header(){
+    const [cusname, setCusName] = useState("");
+    const [studentName, setStudentName] = useState("");
+    const [studentCode, setStudentCode] = useState("");
+    const [classId, setClassId] = useState("");
+    const { isExpired, isInvalid } = useJwt();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const decodedToken = JSON.parse(atob(token.split(".")[1]));
+
+            // Get the info student from token
+            const studentName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+            const studentCode = decodedToken["Student-Code"];
+            const classId = decodedToken["Class-Id"];
+            
+            setCusName(cusname);
+            setStudentName(studentName);
+            setStudentCode(studentCode);
+            setClassId(classId);
+        } catch (error) {}
+    }, [isExpired, isInvalid]);
+
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+    };
     const logout= {
         border: "none",
         backgroundColor: "white",
@@ -53,7 +85,7 @@ export default function Header(){
                     <div className="de-flex-col">
                         <div className="menu_side_area">
                         <ul id="mainmenu">
-                                    <li><a href=""><i className="fa fa-user"></i> Nguyen Bui Minh Hieu</a>
+                                    <li><a href=""><i className="fa fa-user"></i> {cusname}</a>
                                         <ul>
                                             <li><a className="menu-item" href="">Dashboard</a>
                                             </li>
@@ -65,7 +97,7 @@ export default function Header(){
                                             </li>
                                             <li>
                                                 <form action="" method="post">
-                                                    <button style={logout}
+                                                    <button style={logout} onClick={handleLogout}
                                                             className="menu-item" type="submit"><i
                                                             className="fa fa-arrow-right"></i>Logout
                                                     </button>
