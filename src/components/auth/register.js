@@ -4,26 +4,33 @@ import url from '../../services/url'; // Cần import url từ services/url củ
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Register() {
-    const [user, setUser] = useState({ name: "", email: "", password: "", phone: "", status: 1 });
+    const navigate = useNavigate();
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        password: '',
+        phone: '',
+        status: 1,
+    });
+    const [registerSuccess, setRegisterSuccess] = useState(false);
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    };
 
     const formSubmit = async (e) => {
         e.preventDefault();
         try {
-            const loginResponse = await api.post(url.USER.REGISTER, user);
-            if (loginResponse.data.success) {
-                const token = loginResponse.data.data;
-                localStorage.setItem("accessToken", token);
-
-            } 
+            const registerResponse = await api.post(url.USER.REGISTER, user);
+            setRegisterSuccess(true);
+            setTimeout(() => {
+                window.alert('Register success!');
+                navigate('/login');
+            }, 2000);
         } catch (error) {
             console.log(error);
-    }
-}
-
+        }
+    };
     return (
         <div className="no-bottom no-top" id="content">
             <div id="top"></div>
@@ -91,7 +98,7 @@ function Register() {
                                             />
                                         </div>
                                         <div id="submit">
-                                            <button type="submit" id="send_message" value="Register" className="btn-main btn-fullwidth rounded-3" />
+                                            <button type="submit" id="send_message" value="Register" className="btn-main btn-fullwidth rounded-3" >Register now</button>
                                         </div>
                                     </form>
                                 </div>
