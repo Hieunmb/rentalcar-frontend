@@ -1,6 +1,22 @@
 import BreadCrumb from "../layouts/breadcrumb"
-
+import { useContext, useEffect, useState } from "react";
+import api from "../../services/api";
+import url from "../../services/url";
+import { useParams } from "react-router-dom";
 export default function CarDetail(){
+    const {id} = useParams();
+    const [car,setCar] = useState({});
+    const loadCar = async ()=>{
+        try {
+            const rs = await api.get(url.CAR.DETAIL+`?id=${id}`);
+            setCar(rs.data);
+        } catch (error) {
+
+        }
+    }
+    useEffect(()=>{
+        loadCar();
+    },id);
     return(
     <div className="no-bottom no-top zebra" id="content">
         <div id="top"></div>
