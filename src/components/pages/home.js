@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export default function Home(){
     const ratings ={
@@ -219,7 +220,7 @@ export default function Home(){
                                         </div>
                                         <div className="d-price">
                                             Daily rate from <span></span>
-                                            <a className="btn-main" href="}">Rent Now</a>
+                                            <Link className="btn-main" to="/cardetail/:id">Rent Now</Link>
                                         </div>
                                     </div>
                                 </div>
