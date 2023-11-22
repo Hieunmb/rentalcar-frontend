@@ -1,9 +1,9 @@
 const url ={
-    BASE_URL:"https://localhost:7191/api",
+    BASE_URL:"https://localhost:7191",
     USER:{
-        LOGIN:"/auth/login",
-        REGISTER:"/auth/register",
-        PROFILE:"/auth/profile",
+        LOGIN:"/api/auth/login",
+        REGISTER:"/api/auth/register",
+        PROFILE:"api/auth/profile",
     },
     CAR:{
         LIST:"/car",

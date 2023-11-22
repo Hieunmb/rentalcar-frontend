@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom"
+import { NavLink,Link } from "react-router-dom"
+import HomeCar from "../views/home-car"
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import url from "../../services/url";
 
-export default function Home(){
+function Home(){
     const ratings ={
         color:"#cecece",
         fontSize:"16px",
@@ -9,18 +13,19 @@ export default function Home(){
     const ratingcolor ={
         color:"#fbc634 !important"
     }
+    const [cars,setCars] = useState([]);
+    const loadCar = async ()=>{
+        try {
+            const rs = await api.get(url.CAR.LIST);
+            setCars(rs.data);
+        } catch (error) {
 
-    const titlecar={
-        textTransform: "capitalize",
-        height: "26px",
-        overflow: "hidden",
-        display: "block",
-        display: "-webkit-box",
-        webkitBoxOrient: "vertical",
-        webkitLineClamp: "1",
-        textOverflow: "ellipsis",
-        width: "65%"
+        }
     }
+    useEffect(()=>{
+        loadCar();
+        console.log(cars);
+    },[]);
     return(
         <div className="no-bottom no-top" id="content">
         <div id="top"></div>
@@ -191,17 +196,16 @@ export default function Home(){
                     </div>
 
                     <div className="clearfix"></div>
-
                     <div id="items-carousel" className="owl-carousel wow fadeIn">
-                        <div className="col-lg-12">
+                            <div className="col-lg-12">
                             <div className="de-item mb30">
                                 <div className="d-img">
-                                    <img src="{{$c->thumbnail}}" className="img-fluid" alt=""/>
+                                    <img src="../images/gallery/1.jpg" className="img-fluid" alt=""/>
                                 </div>
                                 <div className="d-info">
                                     <div className="d-text">
                                         <div style={{display: "flex"}} className="title-car">
-                                            <h4 style={titlecar}>KIA</h4>
+                                            <h4 style={{width: "65%"}}>KIA</h4>
                                             <div className="d-item_like">
                                                 <div className="ratings" style={ratings}>
                                                     <i className="fa fa-star rating-color" style={ratingcolor}></i>
@@ -220,14 +224,13 @@ export default function Home(){
                                         </div>
                                         <div className="d-price">
                                             Daily rate from <span></span>
-                                            <Link className="btn-main" to="/cardetail/:id">Rent Now</Link>
+                                            <NavLink className="btn-main" to={`/cardetail/${cars.id}`}>Rent Now</NavLink>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -493,3 +496,4 @@ export default function Home(){
     </div>
     )
 }
+export default Home;
