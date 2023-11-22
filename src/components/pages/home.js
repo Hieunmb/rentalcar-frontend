@@ -5,14 +5,6 @@ import api from "../../services/api";
 import url from "../../services/url";
 
 function Home(){
-    const ratings ={
-        color:"#cecece",
-        fontSize:"16px",
-    }
-
-    const ratingcolor ={
-        color:"#fbc634 !important"
-    }
     const [cars,setCars] = useState([]);
     const loadCar = async ()=>{
         try {
@@ -197,39 +189,13 @@ function Home(){
 
                     <div className="clearfix"></div>
                     <div id="items-carousel" className="owl-carousel wow fadeIn">
-                            <div className="col-lg-12">
-                            <div className="de-item mb30">
-                                <div className="d-img">
-                                    <img src="../images/gallery/1.jpg" className="img-fluid" alt=""/>
-                                </div>
-                                <div className="d-info">
-                                    <div className="d-text">
-                                        <div style={{display: "flex"}} className="title-car">
-                                            <h4 style={{width: "65%"}}>KIA</h4>
-                                            <div className="d-item_like">
-                                                <div className="ratings" style={ratings}>
-                                                    <i className="fa fa-star rating-color" style={ratingcolor}></i>
-                                                    <i className="fa fa-star rating-color" style={ratingcolor}></i>
-                                                    <i className="fa fa-star rating-color" style={ratingcolor}></i>
-                                                    <i className="fa fa-star rating-color" style={ratingcolor}></i>
-                                                    <i className="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="d-atr-group">
-                                            <span className="d-atr"><img src="images/icons/1.svg" alt=""/>4</span>
-                                            <span className="d-atr"><img src="images/icons/2.svg" alt=""/>50</span>
-                                            <span className="d-atr"><img src="images/icons/3.svg" alt=""/>200</span>
-                                            <span className="d-atr"><img src="images/icons/4.svg" alt=""/></span>
-                                        </div>
-                                        <div className="d-price">
-                                            Daily rate from <span></span>
-                                            <NavLink className="btn-main" to={`/cardetail/${cars.id}`}>Rent Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
+                    {
+                    cars.map((e,k)=>{
+                        return (
+                                <HomeCar car={e} />
+                        )
+                    })
+                }
                     </div>
                 </div>
             </div>
