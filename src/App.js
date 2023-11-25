@@ -57,7 +57,7 @@ const ProtectedLoginRoute = ({ element }) => {
       <Route path="/" element={<ProtectedRoute element={<Home />} />} />
       <Route path="/login" element={<ProtectedLoginRoute element={<Login />} />} />
       <Route path="/register" element={<ProtectedLoginRoute element={<Register />} />} />
-      <Route path='/cardetail/:id' element={<CarDetail/>} />
+      <Route path='/cardetail/:id' element={<ProtectedRoute element={<CarDetail />}/>} />
       </Routes>
       <BackToTop/>
       <Footer/>

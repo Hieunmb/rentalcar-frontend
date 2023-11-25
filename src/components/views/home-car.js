@@ -25,7 +25,6 @@ function HomeCar(props){
                                                         display: "block",
                                                         display: "-webkit-box",
                                                         webkitBoxOrient: "vertical",
-                                                        webkitLineClamp: "1",
                                                         textOverflow: "ellipsis",
                                                         width: "65%"}}>{car.model}</h4>
                                             <div className="d-item_like">

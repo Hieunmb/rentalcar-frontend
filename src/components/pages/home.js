@@ -190,7 +190,7 @@ function Home(){
                     <div className="clearfix"></div>
                     <div id="items-carousel" className="owl-carousel wow fadeIn">
                     {
-                    cars.map((e,k)=>{
+                    cars.map((e)=>{
                         return (
                                 <HomeCar car={e} />
                         )
