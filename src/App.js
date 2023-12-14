@@ -51,7 +51,6 @@ const ProtectedLoginRoute = ({ element }) => {
 };
   return (
     <div className="App">
-      <Router>
       <Header/>
       <Routes>
       <Route path="/" element={<ProtectedRoute element={<Home />} />} />
@@ -61,7 +60,6 @@ const ProtectedLoginRoute = ({ element }) => {
       </Routes>
       <BackToTop/>
       <Footer/>
-      </Router>
     </div>
   );
 }
